@@ -1,0 +1,19 @@
+*{
+  margin: auto;
+  width: 80%;
+
+}
+.container{
+  margin: auto;
+  padding: 10px;
+}
+.form-group {
+  padding-top: 15px;
+  display:grid;
+}
+.h1 {
+  text-align: center;
+}
+.registration-form{
+
+}

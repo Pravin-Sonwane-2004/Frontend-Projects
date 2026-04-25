@@ -1,0 +1,34 @@
+.container h1::before{
+    content: "🤦‍♂️";
+}
+.container h1::after{
+    content:"👌";
+}
+.container p::first-letter{
+    font-size: xx-large;
+}
+.container p::first-line {
+    background: rgb(197, 88, 88);
+}
+.container p::placeholder{
+    
+}
+::selection {
+    background-color: #a7d6ff;
+    font: optional;
+    font-weight: bold;
+}
+.container{
+    border-radius: 20px;
+    border: 1px solid #000;
+    min-width: 10px;
+    min-height: 100px;
+}
+.container p {
+    padding: 20px;
+    text-align: justify;
+}
+.container h1 {
+    text-align: center;
+}
+
