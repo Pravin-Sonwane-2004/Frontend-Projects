@@ -71,6 +71,66 @@
 
 //now its time to work with from 
 
+// import { useState } from "react";
+
+// export default function App() {
+
+//   const [formData,submitData] = useState({
+//     email : "email",
+//     name : "name"
+//   });
+
+//   function handleChange(e) {
+//     submitData ({
+//       ...formData,
+//       [e.target.name] : [e.target.value]
+//     });
+//   }
+  
+//   async function handleSubmit(e) {
+//     e.preventDefault();
+
+//     const response = await fetch ("url" , {
+//       method : "POST",
+
+//       headers : {
+//         "Content-Type" : "application/json"
+//       },
+//       body :  JSON.stringify(formData)
+//     })
+
+//       if(!response.ok) {
+//           throw new Error("Cant Fetch");
+//       }
+//       else {
+//         const data = response.json();
+//         console.log(data);
+//       }
+//   }
+//   return (
+//     <>
+//     <form action="">
+//       <h1>Data</h1>
+
+//         <input
+//           name="name"
+//           placeholder="Enter name"
+//           value={formData.name}
+//           onChange={handleChange}
+//         />
+
+//         <input
+//           name="email"
+//           placeholder="Enter email"
+//           value={formData.email}
+//           onChange={handleChange}
+//         />
+//                 <button type="submit">Submit</button> 
+//     </form>  
+//     </>
+//   )
+// }
+
 import { useState } from "react";
 
 export default function App() {
@@ -86,18 +146,36 @@ export default function App() {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
+
+    try {
+      const response = await fetch("http://localhost:8080/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send data");
+      }
+
+      const data = await response.json();
+      console.log("Saved:", data);
+
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (
     <>
-      <h1>User Form</h1>
+      <h1>Register User</h1>
 
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
           name="name"
           placeholder="Enter name"
           value={formData.name}
@@ -105,7 +183,6 @@ export default function App() {
         />
 
         <input
-          type="email"
           name="email"
           placeholder="Enter email"
           value={formData.email}
