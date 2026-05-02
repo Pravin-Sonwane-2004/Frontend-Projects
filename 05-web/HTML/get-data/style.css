@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+  border-collapse: collapse; /* Prevents double borders */
+}
+
+table thead tr th {
+  border: 1px solid #000;
+}
+
+button {
+    
+}
